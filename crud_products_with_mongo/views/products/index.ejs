@@ -1,0 +1,28 @@
+<%- include('../partials/header') %>
+    <div class="row text-center mx-auto justify-content-center">
+        <% for(let prd of product){ %>
+            <div class="col-sm-6" style="width: 18rem; display: flex">
+                <div class="card-group mb-3">
+                    <div class="card">
+                        <img src="<%= prd.img %> " class="img-thumbnail" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <%= prd.name %>
+
+                            </h5>
+                            <p class="card-text">
+                                <b>
+                                    <%= prd.category.toUpperCase() %>
+                                </b>
+                            </p>
+                            <a class="btn btn-primary" href="/products/<%= prd._id %> ">
+                                Ditails
+                            </a>
+                            <p class="card-text"><small class="text-muted">Price: $<%= prd.price %> </small></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <% } %>
+                <%- include('../partials/footer') %>
