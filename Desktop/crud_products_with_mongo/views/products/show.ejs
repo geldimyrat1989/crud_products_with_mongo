@@ -1,0 +1,30 @@
+<%- include('../partials/header') %>
+    <div class="row text-center mx-auto justify-content-center">
+        <div class="col-sm-6" style="width: 18rem; display: flex">
+            <div class="card-group mb-3">
+                <div class="card">
+                    <img src="<%= product.img %>" class="img-thumbnail" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <%= product.name %>
+
+
+                        </h5>
+                        <p class="card-text">
+                            <b> Category:
+                                <%= product.category.toUpperCase() %>
+
+                            </b>
+                        </p>
+                        <a class="btn btn-primary" href="/products/<%= product._id %>/edit ">Edit</a>
+                        <a class="btn btn-success" href="/products">All Products</a>
+                        <p class="card-text"><small class="text-muted">Price: $<%= product.price %></small></p>
+
+                        <form action="/products/<%= product._id %>?_method=DELETE" method="POST">
+                            <button class="btn btn-danger">Delete</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <%- include('../partials/footer') %>

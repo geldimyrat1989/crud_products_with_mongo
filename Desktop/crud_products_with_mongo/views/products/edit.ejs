@@ -1,0 +1,52 @@
+<%- include('../partials/header') %>
+    <div class="row mb-3 mx-auto justify-content-center">
+        <div class="col-6">
+            <h1>Edit product</h1>
+            <form action="/products/<%= product._id %>?_method=PUT" method="post" class="row g-3 needs-validation"
+                novalidate>
+                <div class="col-md-4">
+                    <label for="name" class="form-label">Product Name:</label>
+                    <input type="text" class="form-control" value="<%= product.name %> " name="name" id="name" required>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <label for="price" class="form-label">Product Price:</label>
+                    <input type="number" name="price" value="<%= product.price %>" class="form-control" id="price"
+                        required>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <label for="category" class="form-label">Choose Category:</label>
+                    <div class="input-group has-validation">
+                        <select class="form-control" name="category" id="category" required>
+                            <% for(let category of categories){ %>
+                                <!-- here we checking with ternary operator if category is selected -->
+                                <option value="<%= category %>" <%=product.category===category ? 'selected' :''%>>
+                                    <%= category %>
+                                </option>
+
+                                <% } %>
+
+                        </select>
+
+                        <div class="invalid-feedback">
+                            Please choose a category
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <label for="img" class="form-label">Enter Img URL</label>
+                    <input type="text" name="img" value="<%= product.img %>" class="form-control" id="img" required>
+                    <div class="invalid-feedback">
+                        Enter valid URL!
+                    </div>
+                </div>
+                <button class="btn btn-primary">Update</button>
+            </form>
+        </div>
+    </div>
+    <%- include('../partials/footer') %>
